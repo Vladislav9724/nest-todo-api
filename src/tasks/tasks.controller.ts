@@ -16,7 +16,7 @@ export class TasksController {
   }
 
   @Get(':id')
-  getOne(@Param('id') id: string){
+  getOne(@Param('id') id: string):Promise<Tasks>{
     return this.tasksService.getById(id)
   }
 

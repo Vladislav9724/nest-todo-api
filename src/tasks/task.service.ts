@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { CreateTasksDto } from "./dto/create-tasks.dto";
 import { InjectModel } from "@nestjs/mongoose";
 import { TaskDocument, Tasks } from "./schemas/tasks.schema";
@@ -16,20 +16,32 @@ export class TaskService{
     return this.taskModel.find().exec()
   }
 
-  getById(id: string){
-    return this.taskModel.findById(id)
+  async getById(id: string):Promise<Tasks>{
+    const task = await this.taskModel.findById(id)
+    if (task){
+      return task
+    }
+    throw new BadRequestException("No task")
   }
 
-  create(taskDto: CreateTasksDto): Promise<Tasks>{
+  async create(taskDto: CreateTasksDto): Promise<Tasks>{
     const newTask = new this.taskModel(taskDto)
     return newTask.save()
   }
 
   async remove (id: string): Promise<Tasks> {
-    return this.taskModel.findByIdAndRemove(id)
+    const taskRemove = await this.taskModel.findByIdAndRemove(id)
+    if (taskRemove){
+      return taskRemove
+    }
+    throw new BadRequestException("No task")
   }
 
   async update (id: string, taskDto: UpdateTasksDto): Promise<Tasks>{
-    return this.taskModel.findByIdAndUpdate(id, taskDto, {new: true})
+    const taskUpdate = await this.taskModel.findByIdAndUpdate(id, taskDto, {new: true})
+    if(taskUpdate){
+      return taskUpdate
+    }
+    throw new BadRequestException("no task")
   }
 }
