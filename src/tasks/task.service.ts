@@ -1,7 +1,7 @@
 import { Model } from "mongoose";
 import { BadRequestException, Injectable } from "@nestjs/common";
-import { CreateTasksDto } from "./dto/create-tasks.dto";
 import { InjectModel } from "@nestjs/mongoose";
+import { CreateTasksDto } from "./dto/create-tasks.dto";
 import { TaskDocument, Tasks } from "./schemas/tasks.schema";
 import { UpdateTasksDto } from "./dto/update-tasks.dto";
 
