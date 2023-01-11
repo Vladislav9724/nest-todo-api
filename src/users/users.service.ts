@@ -36,10 +36,12 @@ export class UsersService {
   }
 
   async updateUser(id: string, userDto: UpdateUsersDto): Promise<Users> {
-    const userUpdate = await this.userModule.findByIdAndUpdate(id, userDto, {new: true})
-    if (userUpdate){
-      return userUpdate
-      }
-    throw new BadRequestException('The user is missing')
+    const userUpdate = await this.userModule.findByIdAndUpdate(id, userDto, {
+      new: true,
+    });
+    if (userUpdate) {
+      return userUpdate;
+    }
+    throw new BadRequestException('The user is missing');
   }
 }
