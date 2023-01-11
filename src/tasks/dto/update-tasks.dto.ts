@@ -1,4 +1,4 @@
-import { IsBoolean, IsOptional, IsString, Length } from "class-validator";
+import { IsBoolean, IsOptional, IsString, Length } from 'class-validator';
 
 export class UpdateTasksDto {
   @IsString({ message: 'Must be a string type' })
