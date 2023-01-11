@@ -25,12 +25,12 @@ export class UsersController {
     return this.usersService.createUser(createUserDto)
   }
 
-  @Delete('id')
+  @Delete(':id')
   async remove(@Param('id')id: string): Promise<Users>{
     return this.usersService.removeUserId(id)
   }
 
-  @Put('id')
+  @Put(':id')
   async updateUserId(@Body() updateUser: UpdateUsersDto, @Param('id')id: string): Promise<Users>{
     return this.usersService.updateUser(id, updateUser)
   }
