@@ -1,18 +1,18 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
-export type TaskDocument = Tasks & Document
+export type TaskDocument = Tasks & Document;
 
-@Schema({timestamps: true})
-export class Tasks{
+@Schema({ timestamps: true })
+export class Tasks {
   @Prop()
-  title: string
+  title: string;
 
   @Prop()
-  body: string
+  body: string;
 
-@Prop({default:false})
-isCompleted: boolean
+  @Prop({ default: false })
+  isCompleted: boolean;
 }
 
-export const TaskSchema = SchemaFactory.createForClass(Tasks)
+export const TaskSchema = SchemaFactory.createForClass(Tasks);

@@ -1,12 +1,18 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
-export class CreateUsersDto{
-  @IsString({message:"Must be a string type" })
-  readonly name: string
-  @IsString({message:"Must be a string type" })
-  readonly lastName: string
+export class CreateUsersDto {
+  @IsString({ message: 'Must be a string type' })
+  readonly name: string;
+  @IsString({ message: 'Must be a string type' })
+  readonly lastName: string;
   @IsNumber()
-  readonly age: number
-  @IsString({message:"Must be a string type" })
-  readonly email: string
+  readonly age: number;
+  @IsEmail()
+  readonly email: string;
+
+  readonly address: {
+    readonly citi: string,
+    readonly street: string,
+    readonly house: number
+  }
 }

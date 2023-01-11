@@ -1,7 +1,18 @@
-export class UpdateUsersDto{
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
-  readonly name: string
-  readonly lastName: string
-  readonly age: number
-  readonly email: string
+export class UpdateUsersDto {
+  @IsString({ message: 'Must be a string type' })
+  readonly name: string;
+  @IsString({ message: 'Must be a string type' })
+  readonly lastName: string;
+  @IsNumber()
+  readonly age: number;
+  @IsEmail()
+  readonly email: string;
+
+  readonly address?: {
+    citi: string,
+    street: string,
+    house: number
+  }
 }

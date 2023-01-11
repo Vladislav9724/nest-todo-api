@@ -1,4 +1,4 @@
-export class UpdateTasksDto{
-  readonly title:string
-  readonly body: string
+export class UpdateTasksDto {
+  readonly title: string;
+  readonly body: string;
 }
