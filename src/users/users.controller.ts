@@ -11,27 +11,27 @@ export class UsersController {
   }
 
   @Get()
-  getUsers(): Promise<Users[]>{
+  async getUsers(): Promise<Users[]>{
     return this.usersService.getUsers()
   }
 
   @Get(':id')
-  getUserId(@Param('id') id: string): Promise<Users>{
+  async getUserId(@Param('id') id: string): Promise<Users>{
     return this.usersService.getUserId(id)
   }
 
   @Post()
-  createUser(@Body() createUserDto: CreateUsersDto): Promise<Users>{
+  async createUser(@Body() createUserDto: CreateUsersDto): Promise<Users>{
     return this.usersService.createUser(createUserDto)
   }
 
   @Delete('id')
-  remove(@Param('id')id: string): Promise<Users>{
+  async remove(@Param('id')id: string): Promise<Users>{
     return this.usersService.removeUserId(id)
   }
 
   @Put('id')
-  updateUserId(@Body() updateUser: UpdateUsersDto, @Param('id')id: string): Promise<Users>{
+  async updateUserId(@Body() updateUser: UpdateUsersDto, @Param('id')id: string): Promise<Users>{
     return this.usersService.updateUser(id, updateUser)
   }
 

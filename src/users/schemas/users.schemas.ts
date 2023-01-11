@@ -10,13 +10,13 @@ export class Users{
   name: string
 
   @Prop()
-  lastName?: string
+  lastName: string
 
   @Prop()
-  age?: number
+  age: number
 
   @Prop()
-  email?: string
+  email: string
 
 }
 
